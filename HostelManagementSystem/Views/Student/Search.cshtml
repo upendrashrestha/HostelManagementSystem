@@ -1,0 +1,105 @@
+﻿@model HostelManagementSystem.Models.SearchCriteria
+
+<div class="row">
+    <div class="col-md-12">
+
+
+        @{
+        ViewBag.Title = "Search Student";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        @*<span class="pull-left"><span class="glyphicon glyphicon-search"></span> Search Student</span>
+        <span class="pull-right"><i class="glyphicon glyphicon-backward"></i> @Html.ActionLink("Student Dashboard", "Index") </span>*@
+        <b style="color:red"> @ViewData["Error"] </b>
+        <br/>
+        @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        First Name :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Phone :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Room No. :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.RoomNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RoomNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Last Name :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Email :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Search Inactive user :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.CheckBoxFor(model => model.Inactive, new { htmlAttributes = new { @class = "form-control form-check" } })
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-6 col-md-8">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+}
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+
+
+
+    </div>
+</div>

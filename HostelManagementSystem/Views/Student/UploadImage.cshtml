@@ -1,0 +1,74 @@
+﻿@model HostelManagementSystem.Data.t_student
+
+@{
+    ViewBag.Title = "Upload/Update Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("UploadImage", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <span class="pull-left"><span class="glyphicon glyphicon-edit"></span> Edit Student</span>
+        <span class="pull-right"><i class="glyphicon glyphicon-backward"></i> @Html.ActionLink("Student Dashboard", "Index") </span>
+        <br />
+        <hr />
+        <div class="col-lg-12">
+            <div class="col-lg-2">
+                @{
+                    var imgSrc = "";
+                    if (Model.img_file != null)
+                    {
+
+                        var base64 = Convert.ToBase64String(Model.img_file);
+                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img src="@imgSrc" width="32" height="32" />
+
+                    }
+                }
+            </div>
+            <div class="col-lg-6">
+                <b>@Html.DisplayFor(model => model.first_name) @Html.DisplayFor(model => model.last_name)</b>
+                <p>Building : @Html.DisplayFor(model => model.building_info) &emsp;  &emsp;  Room : <b>@Html.DisplayFor(model => model.room_no)</b></p>
+            </div>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.stud_id)
+
+        <div class="col-lg-12">
+            <div class="pull-left col-lg-12">
+                <div class="pull-left col-lg-6">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            Upload Picture :
+                        </div>
+                        <div class="col-md-8">
+                            <input name="Image" type="file" />
+                            @Html.ValidationMessageFor(model => model.img_file)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-primary" />
+                    <a class="btn btn-danger" href="@Url.Action("Details","Student", new { id = Model.stud_id })">
+                        <i class="glyphicon glyphicon-remove-circle"></i>  Cancel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

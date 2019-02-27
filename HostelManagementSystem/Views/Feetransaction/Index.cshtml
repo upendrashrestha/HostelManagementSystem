@@ -1,0 +1,78 @@
+﻿@model HostelManagementSystem.Models.StudentFeePayment
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Student.first_name)  @Html.DisplayFor(model => model.Student.last_name)
+        </td>
+    </tr>
+    <tr><td>@Html.DisplayFor(model => model.Student.address)</td></tr>
+    <tr><td>@Html.DisplayFor(model => model.Student.email)</td></tr>
+    <tr> <td>@Html.DisplayFor(model => model.Student.monthly_fee)</td></tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            Paid Amount
+        </th>
+        <th>
+            Due Amount
+        </th>
+        <th>
+            Month
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Approved
+        </th>
+        <th>
+            Paid On
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Transaction)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.paid_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.due_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paid_for_month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paid_for_year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tran_approved)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.created_on)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.feetran_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.feetran_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.feetran_id })
+            </td>
+        </tr>
+    }
+
+</table>

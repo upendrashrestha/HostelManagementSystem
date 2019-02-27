@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<br />
+<div class="row">
+    <div class="col-lg-2 col-md-2">
+
+        <a style="text-decoration:none" href="@Url.Action("Create")">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i style="font-size:3.5em;" class="glyphicon glyphicon-plus "></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <b>Add New Staff</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-2 col-md-2">
+
+        <a style="text-decoration:none" href="@Url.Action("List")">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i style="font-size:3.5em;" class="glyphicon glyphicon-list "></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <b>View All Staff</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-2 col-md-2">
+
+        <a style="text-decoration:none" href="@Url.Action("List","User")">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i style="font-size:3.5em;" class="glyphicon glyphicon-user "></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <b>View Users</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+</div>

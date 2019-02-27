@@ -1,0 +1,163 @@
+﻿body {
+    margin: 0px;
+    padding:0px;
+}
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.icon-bar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+}
+
+    .icon-bar a {
+        float: left;
+        width: 20%;
+        text-align: center;
+        padding: 12px 0;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 36px;
+    }
+
+/*input[type="text"],
+select.form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+  
+}
+
+    input[type="text"]:focus,
+    select.form-control:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }*/
+
+.list-block {
+    padding: 2px;
+    margin: 5px;
+}
+
+.list-head {
+    background-color: grey;
+    color: #fff;
+    font-weight: bold;
+    line-height: 2.5em;
+}
+
+.list-row {
+    line-height: 2em;
+    background-color: lightgrey;
+    border-top: 1px solid white;
+}
+
+/* Style tab links */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    width: 14%;
+}
+
+.tablink-next {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    width: 10%;
+    text-decoration: none;
+    text-align: center;
+}
+
+    .tablink-next glyphicon {
+        text-align: left;
+    }
+
+.tablink-submit {
+    background-color: #09F;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    width: 14%;
+    text-decoration: none;
+    float: right;
+    margin: 2px;
+}
+
+.tablink-cancel {
+    background-color: red;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    width: 14%;
+    text-decoration: none;
+    float: right;
+    margin: 2px;
+}
+
+.dashbar:hover {
+    color: #000000;
+}
+
+.tablink-next:hover {
+    background-color: #777;
+    text-decoration: none;
+    color: azure;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+.tablink-submit:hover {
+    background-color: green;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: dodgerblue;
+    display: none;
+    padding: 60px 10px;
+    height: 100%;
+}
+
+.signed-out {
+    font-size: 24px;
+    line-height: 35px;
+    color: red;
+}
+
+.footnote {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 8pt;
+    font-family: Arial, sans-serif;
+    margin-bottom:20px;
+}

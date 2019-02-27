@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="74a12124b2a843b3bacd139a4c4e3e08" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="HMSModel.t_guardian" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="HMSModel.t_student" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="HMSModel.FK__t_guardia__stud___3F466844" />
+        <EntityTypeShape EntityType="HMSModel.t_feetransaction" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="HMSModel.t_salarytransaction" Width="1.5" PointX="3" PointY="6.625" />
+        <AssociationConnector Association="HMSModel.FK__t_feetran__stud___440B1D61" />
+        <EntityTypeShape EntityType="HMSModel.t_RegisterUser" Width="1.5" PointX="3" PointY="15.125" />
+        <EntityTypeShape EntityType="HMSModel.t_staff" Width="1.5" PointX="0.75" PointY="7" />
+        <AssociationConnector Association="HMSModel.FK__t_guardia__staff__403A8C7D" />
+        <AssociationConnector Association="HMSModel.FK__t_Registe__staff__693CA210" />
+        <AssociationConnector Association="HMSModel.FK__t_salaryt__staff__46E78A0C" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

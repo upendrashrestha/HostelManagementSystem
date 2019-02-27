@@ -1,0 +1,62 @@
+﻿@model HostelManagementSystem.Models.User
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br/>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Add Login Credential</h4>
+    @Model.Staff.first_name @Model.Staff.last_name
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="control-label col-md-4">
+           Username :
+        </div>
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            @Html.ValidationMessageFor(model => model.Username, "*", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-4">
+            Password :
+        </div>
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-4">
+            Confirm Password :
+        </div>
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-10">
+            <input type="submit" value="Add User" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

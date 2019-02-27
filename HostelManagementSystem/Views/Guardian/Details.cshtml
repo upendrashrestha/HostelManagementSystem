@@ -1,0 +1,83 @@
+﻿@model HostelManagementSystem.Data.t_guardian
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>t_guardian</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.relationship)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.relationship)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.t_staff.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.t_staff.first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.t_student.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.t_student.first_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.guard_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

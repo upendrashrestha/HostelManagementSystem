@@ -1,0 +1,245 @@
+﻿@model HostelManagementSystem.Data.t_student
+
+@{
+    ViewBag.Title = "Add Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<button class="tablink" onclick="openPage('Home', this, 'orange')" id="defaultOpen">About</button>
+<button class="tablink" onclick="openPage('Contact', this, 'orange')" id="ContactBtnNav"> Contact</button>
+<button class="tablink" onclick="openPage('News', this, 'orange')" id="EnrollmentBtnNav">Enrollment</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')" id="ContactPersonBtnNav"> Contact Person</button>
+@using (Html.BeginForm("Create", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div id="Home" class="tabcontent">
+
+        <div class="pull-left col-lg-12">
+            <div class="pull-left col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Upload Picture :
+                    </div>
+                    <div class="col-md-8">
+                        <input name="Image" type="file" />
+                        @Html.ValidationMessageFor(model => model.img_file)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        First Name *:
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Last Name *:
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Gender :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Date of Birth :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.dob, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="tablink-next" onclick="openPage('News', ContactBtnNav, 'orange')"> <i class="glyphicon glyphicon-arrow-right"></i> Next </a>
+
+    </div>
+
+    <div id="News" class="tabcontent">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Enrollment Date :
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.enrollment_date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.enrollment_date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Monthly Fee *:
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.monthly_fee, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.monthly_fee, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Building No. :
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.building_info, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.building_info, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Room No. *:
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.room_no, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.room_no, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <a class="tablink-next" onclick="openPage('Contact', EnrollmentBtnNav, 'orange')"> <i class="glyphicon glyphicon-arrow-right"></i> Next </a>
+
+    </div>
+
+    <div id="Contact" class="tabcontent">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Address *:
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Phone *:
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Email :
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    School Detail :
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.school_info, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.school_info, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <a class="tablink-next" onclick="openPage('About', ContactPersonBtnNav, 'orange')"> <i class="glyphicon glyphicon-arrow-right"></i> Next </a>
+
+    </div>
+
+    <div id="About" class="tabcontent">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Guardian Name. *:
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.guardian_name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.guardian_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Contact *:
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.guardian_contact_info, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.guardian_contact_info, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <div class="control-label col-md-4">
+                    Relationship *:
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.guardian_relationship, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.guardian_relationship, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <input type="submit" value="Save" class="btn tablink-submit" />
+        </div>
+        </div>
+        }
+
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function openPage(pageName, elmnt, color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+
+    }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>

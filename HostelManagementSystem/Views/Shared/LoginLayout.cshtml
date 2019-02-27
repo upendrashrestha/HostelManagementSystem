@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+               
+                <div class="navbar-brand">
+                    <span>
+                        <strong>@System.Configuration.ConfigurationManager.AppSettings["CompanyName"]</strong>
+                    </span>
+                </div>
+                @*@Html.ActionLink("System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+          
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @*
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Hostel Management Engine</p>
+        </footer>*@
+    </div>
+    <div class="footnote">
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<HostelManagementSystem.Data.t_staff>
+
+@{
+    ViewBag.Title = "Staff List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="row list-head">
+        <div class="col-md-2">
+            Employee Name
+        </div>
+        <div class="col-md-1">
+            Phone
+        </div>
+        <div class="col-md-3">
+            Email
+        </div>
+        <div class="col-md-2">
+            Join Date
+        </div>
+        <div class="col-md-2">
+            Active
+        </div>
+        <div class="col-md-2">
+            View Detail
+        </div>
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="row list-row">
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.first_name)  @Html.DisplayFor(modelItem => item.last_name)
+            </div>
+            <div class="col-md-1">
+                @Html.DisplayFor(modelItem => item.phone)
+            </div>
+            <div class="col-md-3">
+                @Html.DisplayFor(modelItem => item.email)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.join_date)
+            </div>
+            <div class="col-md-2 ">
+                @{if (item.active == "Y") { <b>Active</b>} else { <i>InActive</i> } }
+            </div>
+            <div class="col-md-2">
+
+                <a style="text-decoration:none" class="btn-sm btn-info" href="@Url.Action("Details","Staff", new { id = item.staff_id })" title="Detail">
+                    View
+                </a>
+
+            </div>
+        </div>
+    }
+
+</div>

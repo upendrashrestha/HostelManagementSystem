@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HostelManagementSystem.Data.SearchStudentResult>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="col-md-12">
+    <div class="row list-head">
+        <div class="col-md-2">
+            Name
+        </div>
+        <div class="col-md-2">
+            Address
+        </div>
+        <di class="col-md-2">
+            Phone
+        </di>
+        <div class="col-md-2">
+            Email
+        </div>
+        <div class="col-md-2">
+            Building No
+        </div>
+        <div class="col-md-2">
+            Room No
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+
+        <div class="row list-row">
+            <div class="col-md-2">
+                <a style="text-decoration:none" href="@Url.Action("Details","Student", new { id = item.stud_id })">
+                    <b>@Html.DisplayFor(modelItem => item.first_name) @Html.DisplayFor(modelItem => item.last_name) </b>
+                </a>
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.address)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.phone)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.email)
+            </div>
+            <div class="col-md-2">
+
+                @Html.DisplayFor(modelItem => item.building_info)
+            </div>
+
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.room_no)
+            </div>
+
+
+
+        </div>
+
+
+
+    }
+</div>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<HostelManagementSystem.Data.SearchStudentResult>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Search Result List</h2>
+<p>
+    @Html.ActionLink("Search Student", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Full Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Contact Detail
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            School Detail
+        </th>
+        <th>
+            Room No.
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name) @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone) (@Html.DisplayFor(modelItem => item.email))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.school_info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.room_no)
+            </td>
+            <td>
+              
+                @Html.ActionLink("See Details", "Details", "Student", new { id = item.stud_id }, null)
+               
+
+            </td>
+        </tr>
+    }
+
+</table>

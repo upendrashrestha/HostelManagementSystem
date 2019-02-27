@@ -1,0 +1,928 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_feetransaction">
+          <Key>
+            <PropertyRef Name="feetran_id" />
+          </Key>
+          <Property Name="feetran_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="stud_id" Type="varchar" MaxLength="50" />
+          <Property Name="paid_amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="due_amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="paid_for_month" Type="varchar" MaxLength="20" />
+          <Property Name="paid_for_year" Type="varchar" MaxLength="20" />
+          <Property Name="tran_approved" Type="varchar" MaxLength="20" />
+          <Property Name="approved_by" Type="varchar" MaxLength="20" />
+          <Property Name="created_by" Type="varchar" MaxLength="20" />
+          <Property Name="created_on" Type="varchar" MaxLength="50" />
+          <Property Name="comments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="t_guardian">
+          <Key>
+            <PropertyRef Name="guard_id" />
+          </Key>
+          <Property Name="guard_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="200" />
+          <Property Name="last_name" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="500" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="relationship" Type="varchar" MaxLength="20" />
+          <Property Name="stud_id" Type="varchar" MaxLength="50" />
+          <Property Name="staff_id" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_RegisterUser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Create_On" Type="datetime" />
+          <Property Name="staff_id" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="t_salarytransaction">
+          <Key>
+            <PropertyRef Name="salarytran_id" />
+          </Key>
+          <Property Name="salarytran_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="staff_id" Type="varchar" MaxLength="50" />
+          <Property Name="paid_amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="advance_amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="paid_for_month" Type="varchar" MaxLength="20" />
+          <Property Name="paid_for_year" Type="varchar" MaxLength="20" />
+          <Property Name="tran_approved" Type="varchar" MaxLength="20" />
+          <Property Name="approved_by" Type="varchar" MaxLength="20" />
+          <Property Name="created_by" Type="varchar" MaxLength="20" />
+          <Property Name="created_on" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="t_staff">
+          <Key>
+            <PropertyRef Name="staff_id" />
+          </Key>
+          <Property Name="staff_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="200" />
+          <Property Name="last_name" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="500" />
+          <Property Name="dob" Type="datetime" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="varchar" MaxLength="50" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="guardian_name" Type="varchar" MaxLength="500" />
+          <Property Name="guardian_contact_info" Type="varchar" MaxLength="200" />
+          <Property Name="guardian_relationship" Type="varchar" MaxLength="200" />
+          <Property Name="join_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="active" Type="char" MaxLength="1" />
+          <Property Name="building_info" Type="varchar" MaxLength="50" />
+          <Property Name="img_file" Type="varbinary(max)" />
+          <Property Name="citizenship_no" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_student">
+          <Key>
+            <PropertyRef Name="stud_id" />
+          </Key>
+          <Property Name="stud_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="200" />
+          <Property Name="last_name" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="500" />
+          <Property Name="dob" Type="datetime" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="varchar" MaxLength="20" />
+          <Property Name="monthly_fee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="school_info" Type="varchar" MaxLength="500" />
+          <Property Name="guardian_name" Type="varchar" MaxLength="500" />
+          <Property Name="guardian_contact_info" Type="varchar" MaxLength="200" />
+          <Property Name="guardian_relationship" Type="varchar" MaxLength="200" />
+          <Property Name="room_no" Type="varchar" MaxLength="10" />
+          <Property Name="building_info" Type="varchar" MaxLength="200" />
+          <Property Name="enrollment_date" Type="datetime" />
+          <Property Name="img_file" Type="varbinary(max)" />
+          <Property Name="Active" Type="char" MaxLength="1" />
+          <Property Name="InActive_Date" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__t_feetran__stud___440B1D61">
+          <End Role="t_student" Type="Self.t_student" Multiplicity="0..1" />
+          <End Role="t_feetransaction" Type="Self.t_feetransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_student">
+              <PropertyRef Name="stud_id" />
+            </Principal>
+            <Dependent Role="t_feetransaction">
+              <PropertyRef Name="stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__t_guardia__staff__403A8C7D">
+          <End Role="t_staff" Type="Self.t_staff" Multiplicity="0..1" />
+          <End Role="t_guardian" Type="Self.t_guardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="t_guardian">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__t_guardia__stud___3F466844">
+          <End Role="t_student" Type="Self.t_student" Multiplicity="0..1" />
+          <End Role="t_guardian" Type="Self.t_guardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_student">
+              <PropertyRef Name="stud_id" />
+            </Principal>
+            <Dependent Role="t_guardian">
+              <PropertyRef Name="stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__t_Registe__staff__693CA210">
+          <End Role="t_staff" Type="Self.t_staff" Multiplicity="0..1" />
+          <End Role="t_RegisterUser" Type="Self.t_RegisterUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="t_RegisterUser">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__t_salaryt__staff__46E78A0C">
+          <End Role="t_staff" Type="Self.t_staff" Multiplicity="0..1" />
+          <End Role="t_salarytransaction" Type="Self.t_salarytransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="t_salarytransaction">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CreateStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_first_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_last_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_address" Type="varchar" Mode="In" />
+          <Parameter Name="p_dob" Type="datetime" Mode="In" />
+          <Parameter Name="p_phone" Type="varchar" Mode="In" />
+          <Parameter Name="p_email" Type="varchar" Mode="In" />
+          <Parameter Name="p_gender" Type="varchar" Mode="In" />
+          <Parameter Name="p_salary" Type="decimal" Mode="In" />
+          <Parameter Name="p_building_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_contact_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_relationship" Type="varchar" Mode="In" />
+          <Parameter Name="p_join_date" Type="datetime" Mode="In" />
+          <Parameter Name="p_citizenship_no" Type="varchar" Mode="In" />
+          <Parameter Name="p_img_file" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="CreateStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_first_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_last_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_address" Type="varchar" Mode="In" />
+          <Parameter Name="p_dob" Type="datetime" Mode="In" />
+          <Parameter Name="p_phone" Type="varchar" Mode="In" />
+          <Parameter Name="p_email" Type="varchar" Mode="In" />
+          <Parameter Name="p_gender" Type="varchar" Mode="In" />
+          <Parameter Name="p_monthly_fee" Type="decimal" Mode="In" />
+          <Parameter Name="p_school_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_room_no" Type="varchar" Mode="In" />
+          <Parameter Name="p_building_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_contact_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_relationship" Type="varchar" Mode="In" />
+          <Parameter Name="p_enrollment_date" Type="datetime" Mode="In" />
+          <Parameter Name="p_img_file" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="DeactivateStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_staff_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeactivateStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_stud_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_inactive_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="FeePayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_stud_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_paid_amount" Type="decimal" Mode="In" />
+          <Parameter Name="p_due_amount" Type="decimal" Mode="In" />
+          <Parameter Name="p_paid_for_month" Type="varchar" Mode="In" />
+          <Parameter Name="p_paid_for_year" Type="varchar" Mode="In" />
+          <Parameter Name="p_comments" Type="varchar(max)" Mode="In" />
+          <Parameter Name="p_created_by" Type="varchar" Mode="In" />
+          <Parameter Name="p_created_on" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="FeePaymentApproval" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_feetran_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_approved_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetFeePaymentTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_days_before" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_username" Type="varchar" Mode="In" />
+          <Parameter Name="p_password" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_staff_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_create_on" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SearchStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_first_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_last_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_phone" Type="varchar" Mode="In" />
+          <Parameter Name="p_email" Type="varchar" Mode="In" />
+          <Parameter Name="p_room_no" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateFeePayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_feetran_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_stud_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_paid_amount" Type="decimal" Mode="In" />
+          <Parameter Name="p_due_amount" Type="decimal" Mode="In" />
+          <Parameter Name="p_paid_for_month" Type="varchar" Mode="In" />
+          <Parameter Name="p_paid_for_year" Type="varchar" Mode="In" />
+          <Parameter Name="p_comments" Type="varchar(max)" Mode="In" />
+          <Parameter Name="p_created_by" Type="varchar" Mode="In" />
+          <Parameter Name="p_created_on" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_staff_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_first_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_last_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_address" Type="varchar" Mode="In" />
+          <Parameter Name="p_dob" Type="datetime" Mode="In" />
+          <Parameter Name="p_phone" Type="varchar" Mode="In" />
+          <Parameter Name="p_email" Type="varchar" Mode="In" />
+          <Parameter Name="p_gender" Type="varchar" Mode="In" />
+          <Parameter Name="p_salary" Type="decimal" Mode="In" />
+          <Parameter Name="p_building_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_contact_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_relationship" Type="varchar" Mode="In" />
+          <Parameter Name="p_join_date" Type="datetime" Mode="In" />
+          <Parameter Name="p_citizenship_no" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateStaffImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_staff_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_img_file" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_stud_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_first_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_last_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_address" Type="varchar" Mode="In" />
+          <Parameter Name="p_dob" Type="datetime" Mode="In" />
+          <Parameter Name="p_phone" Type="varchar" Mode="In" />
+          <Parameter Name="p_email" Type="varchar" Mode="In" />
+          <Parameter Name="p_gender" Type="varchar" Mode="In" />
+          <Parameter Name="p_monthly_fee" Type="decimal" Mode="In" />
+          <Parameter Name="p_school_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_room_no" Type="varchar" Mode="In" />
+          <Parameter Name="p_building_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_name" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_contact_info" Type="varchar" Mode="In" />
+          <Parameter Name="p_guardian_relationship" Type="varchar" Mode="In" />
+          <Parameter Name="p_enrollment_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="UpdateStudentImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_stud_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_img_file" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_user_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_username" Type="varchar" Mode="In" />
+          <Parameter Name="p_password" Type="nvarchar" Mode="In" />
+          <Parameter Name="p_staff_id" Type="varchar" Mode="In" />
+          <Parameter Name="p_active" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="HMSModelStoreContainer">
+          <EntitySet Name="t_feetransaction" EntityType="Self.t_feetransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_guardian" EntityType="Self.t_guardian" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_RegisterUser" EntityType="Self.t_RegisterUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_salarytransaction" EntityType="Self.t_salarytransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_staff" EntityType="Self.t_staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_student" EntityType="Self.t_student" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__t_feetran__stud___440B1D61" Association="Self.FK__t_feetran__stud___440B1D61">
+            <End Role="t_student" EntitySet="t_student" />
+            <End Role="t_feetransaction" EntitySet="t_feetransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__t_guardia__staff__403A8C7D" Association="Self.FK__t_guardia__staff__403A8C7D">
+            <End Role="t_staff" EntitySet="t_staff" />
+            <End Role="t_guardian" EntitySet="t_guardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK__t_guardia__stud___3F466844" Association="Self.FK__t_guardia__stud___3F466844">
+            <End Role="t_student" EntitySet="t_student" />
+            <End Role="t_guardian" EntitySet="t_guardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK__t_Registe__staff__693CA210" Association="Self.FK__t_Registe__staff__693CA210">
+            <End Role="t_staff" EntitySet="t_staff" />
+            <End Role="t_RegisterUser" EntitySet="t_RegisterUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__t_salaryt__staff__46E78A0C" Association="Self.FK__t_salaryt__staff__46E78A0C">
+            <End Role="t_staff" EntitySet="t_staff" />
+            <End Role="t_salarytransaction" EntitySet="t_salarytransaction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HMSEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="CreateStudent">
+            <Parameter Name="p_first_name" Mode="In" Type="String" />
+            <Parameter Name="p_last_name" Mode="In" Type="String" />
+            <Parameter Name="p_address" Mode="In" Type="String" />
+            <Parameter Name="p_dob" Mode="In" Type="DateTime" />
+            <Parameter Name="p_phone" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_gender" Mode="In" Type="String" />
+            <Parameter Name="p_monthly_fee" Mode="In" Type="Decimal" />
+            <Parameter Name="p_school_info" Mode="In" Type="String" />
+            <Parameter Name="p_room_no" Mode="In" Type="String" />
+            <Parameter Name="p_building_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_name" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_contact_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_relationship" Mode="In" Type="String" />
+            <Parameter Name="p_enrollment_date" Mode="In" Type="DateTime" />
+            <Parameter Name="p_img_file" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="SearchStudent">
+            <Parameter Name="p_first_name" Mode="In" Type="String" />
+            <Parameter Name="p_last_name" Mode="In" Type="String" />
+            <Parameter Name="p_phone" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_room_no" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="t_guardian" EntityType="HMSModel.t_guardian" />
+          <EntitySet Name="t_student" EntityType="HMSModel.t_student" />
+          <AssociationSet Name="FK__t_guardia__stud___3F466844" Association="HMSModel.FK__t_guardia__stud___3F466844">
+            <End Role="t_student" EntitySet="t_student" />
+            <End Role="t_guardian" EntitySet="t_guardian" />
+          </AssociationSet>
+          <EntitySet Name="t_feetransaction" EntityType="HMSModel.t_feetransaction" />
+          <EntitySet Name="t_salarytransaction" EntityType="HMSModel.t_salarytransaction" />
+          <AssociationSet Name="FK__t_feetran__stud___440B1D61" Association="HMSModel.FK__t_feetran__stud___440B1D61">
+            <End Role="t_student" EntitySet="t_student" />
+            <End Role="t_feetransaction" EntitySet="t_feetransaction" />
+          </AssociationSet>
+          <FunctionImport Name="FeePaymentApproval">
+            <Parameter Name="p_feetran_id" Mode="In" Type="String" />
+            <Parameter Name="p_approved_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegisterUser">
+            <Parameter Name="p_username" Mode="In" Type="String" />
+            <Parameter Name="p_password" Mode="In" Type="String" />
+            <Parameter Name="p_staff_id" Mode="In" Type="String" />
+            <Parameter Name="p_create_on" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="t_RegisterUser" EntityType="HMSModel.t_RegisterUser" />
+          <FunctionImport Name="UpdateStudentImage">
+            <Parameter Name="p_stud_id" Mode="In" Type="String" />
+            <Parameter Name="p_img_file" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateStudent">
+            <Parameter Name="p_stud_id" Mode="In" Type="String" />
+            <Parameter Name="p_first_name" Mode="In" Type="String" />
+            <Parameter Name="p_last_name" Mode="In" Type="String" />
+            <Parameter Name="p_address" Mode="In" Type="String" />
+            <Parameter Name="p_dob" Mode="In" Type="DateTime" />
+            <Parameter Name="p_phone" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_gender" Mode="In" Type="String" />
+            <Parameter Name="p_monthly_fee" Mode="In" Type="Decimal" />
+            <Parameter Name="p_school_info" Mode="In" Type="String" />
+            <Parameter Name="p_room_no" Mode="In" Type="String" />
+            <Parameter Name="p_building_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_name" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_contact_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_relationship" Mode="In" Type="String" />
+            <Parameter Name="p_enrollment_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FeePayment">
+            <Parameter Name="p_stud_id" Mode="In" Type="String" />
+            <Parameter Name="p_paid_amount" Mode="In" Type="Decimal" />
+            <Parameter Name="p_due_amount" Mode="In" Type="Decimal" />
+            <Parameter Name="p_paid_for_month" Mode="In" Type="String" />
+            <Parameter Name="p_paid_for_year" Mode="In" Type="String" />
+            <Parameter Name="p_comments" Mode="In" Type="String" />
+            <Parameter Name="p_created_by" Mode="In" Type="String" />
+            <Parameter Name="p_created_on" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateFeePayment">
+            <Parameter Name="p_feetran_id" Mode="In" Type="String" />
+            <Parameter Name="p_stud_id" Mode="In" Type="String" />
+            <Parameter Name="p_paid_amount" Mode="In" Type="Decimal" />
+            <Parameter Name="p_due_amount" Mode="In" Type="Decimal" />
+            <Parameter Name="p_paid_for_month" Mode="In" Type="String" />
+            <Parameter Name="p_paid_for_year" Mode="In" Type="String" />
+            <Parameter Name="p_comments" Mode="In" Type="String" />
+            <Parameter Name="p_created_by" Mode="In" Type="String" />
+            <Parameter Name="p_created_on" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeactivateStudent">
+            <Parameter Name="p_stud_id" Mode="In" Type="String" />
+            <Parameter Name="p_inactive_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SearchStudentFunction" ReturnType="Collection(HMSModel.SearchStudentResult)">
+            <Parameter Name="p_first_name" Mode="In" Type="String" />
+            <Parameter Name="p_last_name" Mode="In" Type="String" />
+            <Parameter Name="p_phone" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_room_no" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateStaff">
+            <Parameter Name="p_first_name" Mode="In" Type="String" />
+            <Parameter Name="p_last_name" Mode="In" Type="String" />
+            <Parameter Name="p_address" Mode="In" Type="String" />
+            <Parameter Name="p_dob" Mode="In" Type="DateTime" />
+            <Parameter Name="p_phone" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_gender" Mode="In" Type="String" />
+            <Parameter Name="p_salary" Mode="In" Type="Decimal" />
+            <Parameter Name="p_building_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_name" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_contact_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_relationship" Mode="In" Type="String" />
+            <Parameter Name="p_join_date" Mode="In" Type="DateTime" />
+            <Parameter Name="p_citizenship_no" Mode="In" Type="String" />
+            <Parameter Name="p_img_file" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateStaff">
+            <Parameter Name="p_staff_id" Mode="In" Type="String" />
+            <Parameter Name="p_first_name" Mode="In" Type="String" />
+            <Parameter Name="p_last_name" Mode="In" Type="String" />
+            <Parameter Name="p_address" Mode="In" Type="String" />
+            <Parameter Name="p_dob" Mode="In" Type="DateTime" />
+            <Parameter Name="p_phone" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_gender" Mode="In" Type="String" />
+            <Parameter Name="p_salary" Mode="In" Type="Decimal" />
+            <Parameter Name="p_building_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_name" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_contact_info" Mode="In" Type="String" />
+            <Parameter Name="p_guardian_relationship" Mode="In" Type="String" />
+            <Parameter Name="p_join_date" Mode="In" Type="DateTime" />
+            <Parameter Name="p_citizenship_no" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateStaffImage">
+            <Parameter Name="p_staff_id" Mode="In" Type="String" />
+            <Parameter Name="p_img_file" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <EntitySet Name="t_staff" EntityType="HMSModel.t_staff" />
+          <AssociationSet Name="FK__t_guardia__staff__403A8C7D" Association="HMSModel.FK__t_guardia__staff__403A8C7D">
+            <End Role="t_staff" EntitySet="t_staff" />
+            <End Role="t_guardian" EntitySet="t_guardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK__t_Registe__staff__693CA210" Association="HMSModel.FK__t_Registe__staff__693CA210">
+            <End Role="t_staff" EntitySet="t_staff" />
+            <End Role="t_RegisterUser" EntitySet="t_RegisterUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__t_salaryt__staff__46E78A0C" Association="HMSModel.FK__t_salaryt__staff__46E78A0C">
+            <End Role="t_staff" EntitySet="t_staff" />
+            <End Role="t_salarytransaction" EntitySet="t_salarytransaction" />
+          </AssociationSet>
+          <FunctionImport Name="DeactivateStaff">
+          <Parameter Name="p_staff_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUser">
+            <Parameter Name="p_user_id" Mode="In" Type="String" />
+            <Parameter Name="p_username" Mode="In" Type="String" />
+            <Parameter Name="p_password" Mode="In" Type="String" />
+            <Parameter Name="p_staff_id" Mode="In" Type="String" />
+            <Parameter Name="p_active" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetFeePaymentTransaction" ReturnType="Collection(HMSModel.GetFeePaymentTransaction_Result)">
+            <Parameter Name="p_days_before" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="SearchStudent">
+          <Property Type="String" Name="first_name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="last_name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="roomNo" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="monthly_fee" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="gender" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="t_guardian">
+          <Key>
+            <PropertyRef Name="guard_id" />
+          </Key>
+          <Property Name="guard_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="relationship" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="stud_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="staff_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="t_student" Relationship="HMSModel.FK__t_guardia__stud___3F466844" FromRole="t_guardian" ToRole="t_student" />
+          <NavigationProperty Name="t_staff" Relationship="HMSModel.FK__t_guardia__staff__403A8C7D" FromRole="t_guardian" ToRole="t_staff" />
+        </EntityType>
+        <EntityType Name="t_student">
+          <Key>
+            <PropertyRef Name="stud_id" />
+          </Key>
+          <Property Name="stud_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="3" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="monthly_fee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="school_info" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="guardian_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="guardian_contact_info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="guardian_relationship" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="room_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="building_info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="t_guardian" Relationship="HMSModel.FK__t_guardia__stud___3F466844" FromRole="t_student" ToRole="t_guardian" />
+          <NavigationProperty Name="t_feetransaction" Relationship="HMSModel.FK__t_feetran__stud___440B1D61" FromRole="t_student" ToRole="t_feetransaction" />
+          <Property Name="enrollment_date" Type="DateTime" Precision="3" />
+          <Property Name="img_file" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Active" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="InActive_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__t_guardia__stud___3F466844">
+          <End Type="HMSModel.t_student" Role="t_student" Multiplicity="0..1" />
+          <End Type="HMSModel.t_guardian" Role="t_guardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_student">
+              <PropertyRef Name="stud_id" />
+            </Principal>
+            <Dependent Role="t_guardian">
+              <PropertyRef Name="stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SearchStudent1_Result">
+          <Property Type="String" Name="stud_id" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="first_name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="last_name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="dob" Nullable="true" Precision="23" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="gender" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="monthly_fee" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="school_info" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="guardian_name" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="guardian_contact_info" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="guardian_relationship" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="room_no" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="building_info" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SearchStudentResult">
+          <Property Type="String" Name="stud_id" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="first_name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="last_name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="dob" Nullable="true" Precision="23" />
+          <Property Type="String" Name="phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="gender" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="monthly_fee" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="school_info" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="guardian_name" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="guardian_contact_info" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="guardian_relationship" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="room_no" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="building_info" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="enrollment_date" Nullable="true" Precision="23" />
+          <Property Type="Binary" Name="img_file" Nullable="true" />
+          <Property Type="String" Name="Active" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="InActive_Date" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="t_feetransaction">
+          <Key>
+            <PropertyRef Name="feetran_id" />
+          </Key>
+          <Property Name="feetran_id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="stud_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paid_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="due_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="paid_for_month" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="paid_for_year" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tran_approved" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="approved_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="created_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="created_on" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="t_student" Relationship="HMSModel.FK__t_feetran__stud___440B1D61" FromRole="t_feetransaction" ToRole="t_student" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_salarytransaction">
+          <Key>
+            <PropertyRef Name="salarytran_id" />
+          </Key>
+          <Property Name="salarytran_id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="staff_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paid_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="advance_amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="paid_for_month" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="paid_for_year" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tran_approved" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="approved_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="created_by" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="created_on" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="t_staff" Relationship="HMSModel.FK__t_salaryt__staff__46E78A0C" FromRole="t_salarytransaction" ToRole="t_staff" />
+        </EntityType>
+        <Association Name="FK__t_feetran__stud___440B1D61">
+          <End Type="HMSModel.t_student" Role="t_student" Multiplicity="0..1" />
+          <End Type="HMSModel.t_feetransaction" Role="t_feetransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_student">
+              <PropertyRef Name="stud_id" />
+            </Principal>
+            <Dependent Role="t_feetransaction">
+              <PropertyRef Name="stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="t_RegisterUser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Create_On" Type="DateTime" Precision="3" />
+          <Property Name="staff_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="t_staff" Relationship="HMSModel.FK__t_Registe__staff__693CA210" FromRole="t_RegisterUser" ToRole="t_staff" />
+        </EntityType>
+        <EntityType Name="t_staff">
+          <Key>
+            <PropertyRef Name="staff_id" />
+          </Key>
+          <Property Name="staff_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="3" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="guardian_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="guardian_contact_info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="guardian_relationship" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="join_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="building_info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="img_file" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="citizenship_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="t_guardian" Relationship="HMSModel.FK__t_guardia__staff__403A8C7D" FromRole="t_staff" ToRole="t_guardian" />
+          <NavigationProperty Name="t_RegisterUser" Relationship="HMSModel.FK__t_Registe__staff__693CA210" FromRole="t_staff" ToRole="t_RegisterUser" />
+          <NavigationProperty Name="t_salarytransaction" Relationship="HMSModel.FK__t_salaryt__staff__46E78A0C" FromRole="t_staff" ToRole="t_salarytransaction" />
+        </EntityType>
+        <Association Name="FK__t_guardia__staff__403A8C7D">
+          <End Type="HMSModel.t_staff" Role="t_staff" Multiplicity="0..1" />
+          <End Type="HMSModel.t_guardian" Role="t_guardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="t_guardian">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__t_Registe__staff__693CA210">
+          <End Type="HMSModel.t_staff" Role="t_staff" Multiplicity="0..1" />
+          <End Type="HMSModel.t_RegisterUser" Role="t_RegisterUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="t_RegisterUser">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__t_salaryt__staff__46E78A0C">
+          <End Type="HMSModel.t_staff" Role="t_staff" Multiplicity="0..1" />
+          <End Type="HMSModel.t_salarytransaction" Role="t_salarytransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_staff">
+              <PropertyRef Name="staff_id" />
+            </Principal>
+            <Dependent Role="t_salarytransaction">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetFeePaymentTransaction_Result">
+          <Property Type="String" Name="name" Nullable="true" MaxLength="401" />
+          <Property Type="String" Name="stud_id" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="paid_amount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="due_amount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="approved_by" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="tran_approved" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="comments" Nullable="true" />
+          <Property Type="String" Name="monthYear" Nullable="true" MaxLength="41" />
+          <Property Type="String" Name="created_by" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="created_on" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HMSModelStoreContainer" CdmEntityContainer="HMSEntities">
+          <FunctionImportMapping FunctionImportName="CreateStudent" FunctionName="HMSModel.Store.CreateStudent" />
+          <EntitySetMapping Name="t_guardian">
+            <EntityTypeMapping TypeName="HMSModel.t_guardian">
+              <MappingFragment StoreEntitySet="t_guardian">
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="stud_id" ColumnName="stud_id" />
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="guard_id" ColumnName="guard_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_student">
+            <EntityTypeMapping TypeName="HMSModel.t_student">
+              <MappingFragment StoreEntitySet="t_student">
+                <ScalarProperty Name="InActive_Date" ColumnName="InActive_Date" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="img_file" ColumnName="img_file" />
+                <ScalarProperty Name="enrollment_date" ColumnName="enrollment_date" />
+                <ScalarProperty Name="building_info" ColumnName="building_info" />
+                <ScalarProperty Name="room_no" ColumnName="room_no" />
+                <ScalarProperty Name="guardian_relationship" ColumnName="guardian_relationship" />
+                <ScalarProperty Name="guardian_contact_info" ColumnName="guardian_contact_info" />
+                <ScalarProperty Name="guardian_name" ColumnName="guardian_name" />
+                <ScalarProperty Name="school_info" ColumnName="school_info" />
+                <ScalarProperty Name="monthly_fee" ColumnName="monthly_fee" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="stud_id" ColumnName="stud_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_feetransaction">
+            <EntityTypeMapping TypeName="HMSModel.t_feetransaction">
+              <MappingFragment StoreEntitySet="t_feetransaction">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="created_on" ColumnName="created_on" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="tran_approved" ColumnName="tran_approved" />
+                <ScalarProperty Name="paid_for_year" ColumnName="paid_for_year" />
+                <ScalarProperty Name="paid_for_month" ColumnName="paid_for_month" />
+                <ScalarProperty Name="due_amount" ColumnName="due_amount" />
+                <ScalarProperty Name="paid_amount" ColumnName="paid_amount" />
+                <ScalarProperty Name="stud_id" ColumnName="stud_id" />
+                <ScalarProperty Name="feetran_id" ColumnName="feetran_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_salarytransaction">
+            <EntityTypeMapping TypeName="HMSModel.t_salarytransaction">
+              <MappingFragment StoreEntitySet="t_salarytransaction">
+                <ScalarProperty Name="created_on" ColumnName="created_on" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="tran_approved" ColumnName="tran_approved" />
+                <ScalarProperty Name="paid_for_year" ColumnName="paid_for_year" />
+                <ScalarProperty Name="paid_for_month" ColumnName="paid_for_month" />
+                <ScalarProperty Name="advance_amount" ColumnName="advance_amount" />
+                <ScalarProperty Name="paid_amount" ColumnName="paid_amount" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="salarytran_id" ColumnName="salarytran_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FeePaymentApproval" FunctionName="HMSModel.Store.FeePaymentApproval" />
+          <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="HMSModel.Store.RegisterUser" />
+          <EntitySetMapping Name="t_RegisterUser">
+            <EntityTypeMapping TypeName="HMSModel.t_RegisterUser">
+              <MappingFragment StoreEntitySet="t_RegisterUser">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="Create_On" ColumnName="Create_On" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UpdateStudentImage" FunctionName="HMSModel.Store.UpdateStudentImage" />
+          <FunctionImportMapping FunctionImportName="UpdateStudent" FunctionName="HMSModel.Store.UpdateStudent" />
+          <FunctionImportMapping FunctionImportName="FeePayment" FunctionName="HMSModel.Store.FeePayment" />
+          <FunctionImportMapping FunctionImportName="UpdateFeePayment" FunctionName="HMSModel.Store.UpdateFeePayment" />
+          <FunctionImportMapping FunctionImportName="DeactivateStudent" FunctionName="HMSModel.Store.DeactivateStudent" />
+          <FunctionImportMapping FunctionImportName="SearchStudentFunction" FunctionName="HMSModel.Store.SearchStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HMSModel.SearchStudentResult">
+                <ScalarProperty Name="stud_id" ColumnName="stud_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="monthly_fee" ColumnName="monthly_fee" />
+                <ScalarProperty Name="school_info" ColumnName="school_info" />
+                <ScalarProperty Name="guardian_name" ColumnName="guardian_name" />
+                <ScalarProperty Name="guardian_contact_info" ColumnName="guardian_contact_info" />
+                <ScalarProperty Name="guardian_relationship" ColumnName="guardian_relationship" />
+                <ScalarProperty Name="room_no" ColumnName="room_no" />
+                <ScalarProperty Name="building_info" ColumnName="building_info" />
+                <ScalarProperty Name="enrollment_date" ColumnName="enrollment_date" />
+                <ScalarProperty Name="img_file" ColumnName="img_file" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="InActive_Date" ColumnName="InActive_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateStaff" FunctionName="HMSModel.Store.CreateStaff" />
+          <FunctionImportMapping FunctionImportName="UpdateStaff" FunctionName="HMSModel.Store.UpdateStaff" />
+          <FunctionImportMapping FunctionImportName="UpdateStaffImage" FunctionName="HMSModel.Store.UpdateStaffImage" />
+          <EntitySetMapping Name="t_staff">
+            <EntityTypeMapping TypeName="HMSModel.t_staff">
+              <MappingFragment StoreEntitySet="t_staff">
+                <ScalarProperty Name="citizenship_no" ColumnName="citizenship_no" />
+                <ScalarProperty Name="img_file" ColumnName="img_file" />
+                <ScalarProperty Name="building_info" ColumnName="building_info" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="join_date" ColumnName="join_date" />
+                <ScalarProperty Name="guardian_relationship" ColumnName="guardian_relationship" />
+                <ScalarProperty Name="guardian_contact_info" ColumnName="guardian_contact_info" />
+                <ScalarProperty Name="guardian_name" ColumnName="guardian_name" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeactivateStaff" FunctionName="HMSModel.Store.DeactivateStaff" />
+          <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="HMSModel.Store.UpdateUser" />
+          <FunctionImportMapping FunctionImportName="GetFeePaymentTransaction" FunctionName="HMSModel.Store.GetFeePaymentTransaction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HMSModel.GetFeePaymentTransaction_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="stud_id" ColumnName="stud_id" />
+                <ScalarProperty Name="paid_amount" ColumnName="paid_amount" />
+                <ScalarProperty Name="due_amount" ColumnName="due_amount" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="tran_approved" ColumnName="tran_approved" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="monthYear" ColumnName="monthYear" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_on" ColumnName="created_on" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,226 @@
+﻿@model HostelManagementSystem.Data.t_staff
+
+@{
+    ViewBag.Title = "Add New Staff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-lg-12">
+
+        <br />
+        <fieldset>
+            <legend> <b>Basic Information</b> </legend>
+            <br />
+            <div class="pull-left col-lg-12">
+                <div class="pull-left col-lg-6">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            Upload Picture :
+                        </div>
+                        <div class="col-md-8">
+                            <input name="Image" type="file" />
+                            @Html.ValidationMessageFor(model => model.img_file)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            First Name :
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.first_name, "*", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            Last Name :
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.last_name, "*", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            Gender :
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="control-label col-md-4">
+                            Date of Birth :
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.dob, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.dob, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend> <b> Contact Information</b> </legend>
+            <br />
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Address :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.address, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Phone :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.phone, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Email :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>  <b> Official Information </b></legend>
+
+            <br />
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Join Date :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.join_date, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.join_date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Salary :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.salary, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.salary, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Building No. :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.building_info, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.building_info, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Citizenship No. :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.citizenship_no, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.citizenship_no, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <br />
+        <fieldset>
+            <legend> <b>Contact Person Information</b></legend>
+            <br />
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Name. :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.guardian_name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.guardian_name, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Contact Info :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.guardian_contact_info, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.guardian_contact_info, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Relationship :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.guardian_relationship, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.guardian_relationship, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-danger" href="@Url.Action("Index","Staff")">
+                    <i class="glyphicon glyphicon-remove-circle"></i>  Cancel
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

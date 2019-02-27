@@ -1,0 +1,78 @@
+﻿@model HostelManagementSystem.Models.User
+    
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+ 
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.UserId)
+
+
+    <div class="form-horizontal">
+        <h4>Reset Login Credential</h4>
+        @Model.Staff.first_name @Model.Staff.last_name
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-4">
+                Username :
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Username, "*", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-4">
+                Password :
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Password, "", new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-4">
+                Confirm Password :
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-4">
+                Active :
+            </div>
+            <div class="pull-left col-md-8">
+                @Html.EditorFor(model => model.Active, new { htmlAttributes = new { @class = "pull-left", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

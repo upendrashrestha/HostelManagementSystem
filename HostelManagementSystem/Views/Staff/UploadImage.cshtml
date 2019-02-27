@@ -1,0 +1,70 @@
+﻿@model HostelManagementSystem.Data.t_staff
+
+@{
+    ViewBag.Title = "Upload/Update Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("UploadImage", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <div class="col-md-12">
+                    @{
+                        var imgSrc = "";
+                        if (Model.img_file != null)
+                        {
+
+                            var base64 = Convert.ToBase64String(Model.img_file);
+                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc" class="img-circle" width="40%" />
+
+                        }
+                    }
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <div class="col-lg-6">
+                        <b>@Html.DisplayFor(model => model.first_name) @Html.DisplayFor(model => model.last_name)</b>
+                        <p>Building : @Html.DisplayFor(model => model.building_info)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.staff_id)
+
+                <div class="col-lg-12 pull-left">
+                    <div class="form-group">
+                        
+                            <input name="Image" type="file" />
+                            @Html.ValidationMessageFor(model => model.img_file)
+                      
+                    </div>
+                    <div class="form-group">
+                            <input type="submit" value="Upload" class="btn btn-primary" />                                            
+                    
+                        <a class="btn btn-danger" href="@Url.Action("Details","Staff", new { id = Model.staff_id })">
+                            <i class="glyphicon glyphicon-remove-circle"></i>  Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

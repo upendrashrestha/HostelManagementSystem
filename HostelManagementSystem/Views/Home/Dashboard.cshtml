@@ -1,0 +1,175 @@
+﻿<div class="row">
+    <div class="col-md-12">
+
+
+        @{
+            ViewBag.Title = "Dashboard | Hostel Management System";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-3">
+                    <a style="text-decoration:none" href="@Url.Action("Create","Student")">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row dashbar">
+                                    <div class="col-lg-3 text-left">
+                                        <i style="font-size:3.5em;" class="glyphicon glyphicon-plus "></i>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="text-right">
+                                            <b>New Student</b>
+                                        </div>
+                                        <p style="color:#000000"><i class="glyphicon glyphicon-info-sign"></i> <i>Click this option to add new student.</i></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-3">
+                    <a style="text-decoration:none" href="@Url.Action("Search", "Student")">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row dashbar">
+                                    <div class="col-lg-3 text-left">
+                                        <i style="font-size:3.5em;" class="glyphicon glyphicon-search "></i>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="text-right">
+                                            <b>Search Student</b>
+                                        </div>
+                                        <p style="color:#000000"><i class="glyphicon glyphicon-info-sign"></i> <i>Click this option to search student.</i></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-3">
+                    <a style="text-decoration:none" href="@Url.Action("List","Student")">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row dashbar">
+                                    <div class="col-lg-3 text-left">
+                                        <i style="font-size:3.5em;" class="glyphicon glyphicon-list "></i>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="text-right">
+                                            <b>View All Student</b>
+                                        </div>
+                                        <p style="color:#000000"><i class="glyphicon glyphicon-info-sign"></i> <i>Click this option to view all student.</i></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-3">
+                    <a style="text-decoration:none" href="@Url.Action("List","User")">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <div class="row dashbar">
+                                    <div class="col-lg-3 text-left">
+                                        <i style="font-size:3.5em;" class="glyphicon glyphicon-user "></i>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="text-right">
+                                            <b>View All User</b>
+                                        </div>
+                                        <p style="color:#000000"><i class="glyphicon glyphicon-info-sign"></i> <i>Click this option to view all student.</i></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-3">
+                    <a style="text-decoration:none" href="@Url.Action("Create","Staff")">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="row dashbar">
+                                    <div class="col-lg-3 text-left">
+                                        <i style="font-size:3.5em;" class="glyphicon glyphicon-plus-sign "></i>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="text-right">
+                                            <b>Add New Staff</b>
+                                        </div>
+                                        <p style="color:#000000"><i class="glyphicon glyphicon-info-sign"></i> <i>Click this option to add new staff.</i></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3">
+                    <a style="text-decoration:none" href="@Url.Action("List","Staff")">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="row dashbar">
+                                    <div class="col-lg-3 text-left">
+                                        <i style="font-size:3.5em;" class="glyphicon glyphicon-list-alt "></i>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="text-right">
+                                            <b>View All Staff</b>
+                                        </div>
+                                        <p style="color:#000000"><i class="glyphicon glyphicon-info-sign"></i> <i>Click this option to view all staff.</i></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3">
+                    <a style="text-decoration:none" href="@Url.Action("ViewAllFeeTransaction","feetransaction")">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row dashbar">
+                                    <div class="col-lg-3 text-left">
+                                        <i style="font-size:3.5em;" class="glyphicon glyphicon-usd "></i>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="text-right">
+                                            <b>Fee Transaction</b>
+                                        </div>
+                                        <p style="color:#000000"><i class="glyphicon glyphicon-info-sign"></i> <i>Click this option to view all fee transaction.</i></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<HostelManagementSystem.Models.FeePayment>
+
+@{
+    ViewBag.Title = "View All Fee Transaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+
+
+    @using (Html.BeginForm( "ViewAllFeeTransaction", "FeeTransaction", FormMethod.Post))
+    {
+        @Html.Label("Show fee transaction from days : ")
+        <input type="text" name="days" id="days" value="@ViewBag.days"/>
+        <input type="submit" id="btnSubmit" name="Submit" />
+    }
+    <br/>
+
+
+
+    <div class="row list-head">
+        <div class="col-md-2">
+            Student Name
+        </div>
+        <div class="col-md-2">
+            Month
+        </div>
+        <div class="col-md-2">
+            Paid Amount
+        </div>
+        <div class="col-md-2">
+            Due Amount
+        </div>
+        <div class="col-md-2">
+            Created By
+        </div>
+        <div class="col-md-2">
+            Created On
+        </div>
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="row list-row">
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.first_name)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.paid_for_month)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.paid_amount)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.due_amount)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.created_by)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.created_on)
+            </div>
+        </div>
+    }
+    <br />
+    <br />
+</div>
+
+
+
+

@@ -1,0 +1,175 @@
+﻿@model HostelManagementSystem.Data.t_student
+
+@{
+    ViewBag.Title = "Student ::"+Model.first_name+" "+Model.last_name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container col-lg-12">
+    <div class="col-sm-12">
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("UploadImage", new { id = Model.stud_id })">
+                    <i class="glyphicon glyphicon-picture"></i>
+                    <span>
+                        <strong>Upload/Update Picture</strong>
+                    </span>
+                </a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("Edit", new { id = Model.stud_id })">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    <span>
+                        <strong>Edit Information</strong>
+                    </span>
+                </a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("Details", "FeeTransaction", new { id = Model.stud_id })">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span>
+                        <strong>Fee Transaction Details    </strong>
+                    </span>
+                </a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("AddPayment", "FeeTransaction", new { id = Model.stud_id })">
+                    <i class="glyphicon glyphicon-usd"></i>
+                    <span>
+                        <strong>Fee Payment</strong>
+                    </span>
+                </a>
+            </div>
+        </div>
+  
+</div>
+<br/>
+<div class="container col-lg-12">
+
+
+    @{
+        var imgSrc = "";
+        if (Model.img_file != null)
+        {
+            <div class="col-md-3">
+                <div class="gallery">
+                    @{ var base64 = Convert.ToBase64String(Model.img_file);
+                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img src="@imgSrc" width="70" height="100" />
+                    }
+                </div>
+            </div>
+        }
+    }
+    <div class="col-lg-9">
+        <div class="col-md-12">
+            <div class="col-sm-12">
+                <h3>
+                    @Html.DisplayFor(model => model.first_name) @Html.DisplayFor(model => model.last_name)
+
+                </h3>
+                @{
+                    if (Model.Active == "N")
+                    {
+                        <span class="label label-danger">Inactive Student</span>
+                    }
+
+                }
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-home"></i> Building : @Html.DisplayFor(model => model.building_info)
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-star-empty"></i>  Room : <b>@Html.DisplayFor(model => model.room_no)</b>
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-book"></i>
+                <span>
+                    School/College Info :<b>  @Html.DisplayFor(model => model.school_info) </b>
+                </span>
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-map-marker"></i>
+                <span>
+                    Address :<b> @Html.DisplayFor(model => model.address) </b>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container col-lg-12">
+    <div class="container col-lg-12">
+        <hr />
+        <div class="container col-lg-12">
+
+            <i class="glyphicon glyphicon-calendar"></i>
+            <span>
+                Date of Birth :  @Html.DisplayFor(model => model.dob)
+            </span>
+
+            <br />
+            <i class="glyphicon glyphicon-star"></i>
+            <span>
+                Sex :  @Html.DisplayFor(model => model.gender)
+            </span>
+
+        </div>
+    </div>
+    <hr />
+    <div class="container col-lg-12">
+        <div class="col-lg-6">
+            <i class="glyphicon glyphicon-phone"></i>
+            <span>
+                Phone : <b> @Html.DisplayFor(model => model.phone)</b>
+            </span>
+            <br />
+            <i class="glyphicon glyphicon-envelope"></i>
+            <span>
+                Email : <b> @Html.DisplayFor(model => model.email)</b>
+            </span>
+        </div>
+        <div class="col-lg-6">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            <span>
+                Contact Person Info
+                </br>
+                Name: <b>@Html.DisplayFor(model => model.guardian_name)</b></br>
+                Relationship:<b> @Html.DisplayFor(model => model.guardian_relationship)</b></br>
+                Contact Detail : <b> @Html.DisplayFor(model => model.guardian_contact_info)</b>
+            </span>
+        </div>
+    </div>
+    <hr />
+    <div class="col-lg-12">
+        @{if (Model.Active == "Y")
+            {
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deactivateModal">
+                    Deactivate
+                </button>
+            }
+
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deactivateModal" tabindex="-1" role="dialog" aria-labelledby="deactivateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deactivateModalLabel">Deactivate @Model.first_name @Model.last_name</h4>
+            </div>
+            <div class="modal-body">
+                <i> Are you sure you want to deactive this Student? </i>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="@Url.Action("Deactivate", new { id = Model.stud_id })">
+                    Yes
+                </a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+

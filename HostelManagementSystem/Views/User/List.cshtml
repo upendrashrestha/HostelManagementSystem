@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HostelManagementSystem.Models.User>
+
+@{
+    ViewBag.Title = "Accounts Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="row list-head">
+        <div class="col-md-2">
+            Username
+        </div>
+        <div class="col-md-2">
+            Employee Name
+        </div>
+        <div class="col-md-2">
+            Join Date
+        </div>
+        <div class="col-md-2">
+            Account Status
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="row list-row">
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Username)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Staff.first_name)  @Html.DisplayFor(modelItem => item.Staff.last_name)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Staff.join_date)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Active)
+            </div>
+            <div class="col-md-4">
+                <a style="text-decoration:none" class="btn-sm btn-info" href="@Url.Action("Details", "Staff", new { id = item.Staff.staff_id })" title="Detail">
+                    View Staff
+                </a>
+                &emsp;
+                @{if (item.Active)
+        {
+            <a style="text-decoration:none" class="btn-sm btn-danger" href="@Url.Action("Deactivate", "User", new { id = item.UserId })" title="Deactivate">
+                DeActivate User
+            </a>
+
+}
+else
+{
+
+            <a style="text-decoration:none" class="btn-sm btn-primary" href="@Url.Action("Activate", "User", new { id = item.UserId })" title="Deactivate">
+                Activate User
+            </a>
+}
+                }
+
+            </div>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.user_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.user_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.user_id })*@
+            </div>
+            }
+
+        </div>

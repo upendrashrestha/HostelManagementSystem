@@ -1,0 +1,157 @@
+﻿@model HostelManagementSystem.Models.StudentFeePayment
+
+@{
+    ViewBag.Title = "Fee Transaction Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-lg-12">
+    <div class="col-sm-12">
+        <div class="col-sm-10">
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("Details","Student", new { id = Model.Student.stud_id })">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    <span>
+                        <strong>Student Detail</strong>
+                    </span>
+                </a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("AddPayment","FeeTransaction", new { id = Model.Student.stud_id })">
+                    <i class="glyphicon glyphicon-usd"></i>
+                    <span>
+                        <strong>Add Fee Payment</strong>
+                    </span>
+                </a>
+            </div>
+
+            @*<div class="col-sm-2">
+                    <a class="btn btn-success btn-sm" target="_blank" href="@Url.Action("Print","FeeTransaction", new { id = Model.Student.stud_id })">
+                        <i class="glyphicon glyphicon-print"></i>
+                        <span>
+                            <strong>Print All Payment Transaction</strong>
+                        </span>
+                    </a>
+                </div>*@
+        </div>
+    </div>
+
+</div>
+<br />
+<br />
+<div class="container col-lg-12">
+    <div class="col-md-3">
+        <div class="col-sm-12">
+            @{
+                var imgSrc = "";
+                if (Model.Student.img_file != null)
+                {
+
+                    <div class="gallery">
+                        @{ var base64 = Convert.ToBase64String(Model.Student.img_file);
+                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc" width="70" height="100" />
+                        }
+                    </div>
+
+                }
+            }
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-12">
+                <h3>@Html.DisplayFor(model => model.Student.first_name) @Html.DisplayFor(model => model.Student.last_name)</h3>
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-home"></i> Building : @Html.DisplayFor(model => model.Student.building_info)
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-star-empty"></i>  Room : <b>@Html.DisplayFor(model => model.Student.room_no)</b>
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-usd"></i>  Fee : <b>@Html.DisplayFor(model => model.Student.monthly_fee)</b>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+
+        <div class="container col-lg-12">
+            <table class="table">
+                <tr>
+                    <th>
+                        Paid
+                    </th>
+                    <th>
+                        Due
+                    </th>
+                    <th>
+                        Month/Year
+                    </th>
+                    <th>
+                        Paid On
+                    </th>
+                    @*<th>
+                            Approved
+                        </th>*@
+                    <th>
+                        Approved By
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.Transaction)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.paid_amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.due_amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.paid_for_month) / @Html.DisplayFor(modelItem => item.paid_for_year)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.created_on)
+                        </td>
+                        @*<td class="text-center">
+                                @{
+                                    if (item.tran_approved != "Y")
+                                    {
+                                        <i style="color:red" class="text-center glyphicon glyphicon-remove"></i>
+                                    }
+                                    else
+                                    {
+                                        <i style="color:green" class="text-center glyphicon glyphicon-ok"></i>
+                                    }
+                                }
+                            </td>*@
+                        <td class="text-center">
+                            <b> @Html.DisplayFor(modelItem => item.approved_by) </b>
+                        </td>
+
+                        <td>
+
+                            @{
+                                if (string.IsNullOrEmpty(item.approved_by) && item.tran_approved != "Y")
+                                {
+                                    <a style="text-decoration:none" class="btn-sm btn-primary" href="@Url.Action("Edit", "FeeTransaction", new { id = item.feetran_id })">Edit</a>
+
+                                    <a style="text-decoration:none" class="btn-sm btn-warning" href="@Url.Action("PostFeePayment", "FeeTransaction", new { id = item.feetran_id })">Approve</a>
+
+                                }
+                                else
+                                {
+                                    <a style="text-decoration:none" class="btn-sm btn-success" target="_blank" href="@Url.Action("Print", "FeeTransaction", new { id = item.feetran_id })"><i class="glyphicon glyphicon-print"></i>   Print Receipt</a>
+
+                                    <span class="label label-success"><i class=" glyphicon glyphicon-ok"></i></span>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

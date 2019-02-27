@@ -1,0 +1,248 @@
+﻿@model HostelManagementSystem.Models.StudentFeePayment
+
+@{
+    ViewBag.Title = "Edit Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Html.HiddenFor(model => model.Transaction.First().paid_amount, new { htmlAttributes = new { @id = "hidPaidAmount" } })
+
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "--Select Month--",
+        Value = "",
+        Selected=false
+
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Baishak",
+        Value = "Baishak",
+        Selected = false
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Jestha",
+        Value = "Jestha"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Ashar",
+        Value = "Ashar"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Shrawan",
+        Value = "Shrawan"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Bhadra",
+        Value = "Bhadr"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Ashwin",
+        Value = "Ashwin"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Karthik",
+        Value = "Karthik"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Mangsir",
+        Value = "Mangsir"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Poush",
+        Value = "Poush"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Maag",
+        Value = "Maag"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Fagun",
+        Value = "Fagun"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Chait",
+        Value = "Chait"
+    });
+}
+
+<hr />
+<div class="col-lg-12">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("Details","Student", new { id = Model.Student.stud_id })">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    <span>
+                        <strong>Student Detail</strong>
+                    </span>
+                </a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("Details","FeeTransaction", new { id = Model.Student.stud_id })">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <span>
+                        <strong>Fee Transaction Details    </strong>
+                    </span>
+                </a>
+            </div>
+
+            @*<div class="col-sm-2">
+                <a class="btn btn-success btn-sm" href="@Url.Action("AddPayment","FeeTransaction", new { id = Model.Student.stud_id })">
+                    <i class="glyphicon glyphicon-print"></i>
+                    <span>
+                        <strong>Print Payment Detail</strong>
+                    </span>
+                </a>
+            </div>*@
+
+
+        </div>
+    </div>
+    <br />
+    <hr />
+</div>
+<div class="container col-lg-12">
+    <div class="col-md-3">
+        <div class="col-sm-12">
+            @{
+                var imgSrc = "";
+                if (Model.Student.img_file != null)
+                {
+
+                    <div class="gallery">
+                        @{ var base64 = Convert.ToBase64String(Model.Student.img_file);
+                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc" width="70" height="100" />
+                        }
+                    </div>
+
+                }
+            }
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-12">
+                <h3>@Html.DisplayFor(model => model.Student.first_name) @Html.DisplayFor(model => model.Student.last_name)</h3>
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-home"></i> Building : @Html.DisplayFor(model => model.Student.building_info)
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-star-empty"></i>  Room : <b>@Html.DisplayFor(model => model.Student.room_no)</b>
+            </div>
+            <div class="col-sm-12">
+                <i class="glyphicon glyphicon-usd"></i>  Fee : <b>@Html.DisplayFor(model => model.Student.monthly_fee)</b>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="container col-lg-12">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Transaction.First().stud_id)
+                @Html.HiddenFor(model => model.Transaction.First().feetran_id)
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Paid Amount :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Transaction.First().paid_amount, new { htmlAttributes = new { @id = "txtPaidAmount", @onchange = "onchangeevent(); ", @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Transaction.First().paid_amount, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Due Amount :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Transaction.First().due_amount, new { htmlAttributes = new { @id = "txtDueAmount", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Transaction.First().due_amount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Month :
+                    </div>
+                    <div class="col-md-3">
+                        @{
+                foreach (var item in listItems)
+                {
+                    if (item.Value == Model.Transaction.First().paid_for_month)
+                    {
+                        item.Selected = true;
+                    }
+                }
+                        }
+                        @Html.DropDownListFor(model => model.Transaction.First().paid_for_month, listItems, htmlAttributes: new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Year :
+                    </div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Transaction.First().paid_for_year, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Transaction.First().paid_for_year, "*", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-4">
+                        Comments :
+                    </div>
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Transaction.First().comments, new { rows = 6, cols = 80 })
+                        @Html.ValidationMessageFor(model => model.Transaction.First().comments, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" value="Save Payment" class="btn btn-primary" />
+                        <a class="btn btn-danger" href="@Url.Action("Details","Student", new { id = Model.Student.stud_id })">
+                            <i class="glyphicon glyphicon-remove-circle"></i>  Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript" language="javascript">
+    function onchangeevent() {
+        var actPaidAmt = $("#paid_amount").val();
+        var txtPaidAmt = $('#txtPaidAmount').val();
+        $('#txtDueAmount').val(actPaidAmt - txtPaidAmt);
+        alert($("#due_amount").val());
+    }
+</script>

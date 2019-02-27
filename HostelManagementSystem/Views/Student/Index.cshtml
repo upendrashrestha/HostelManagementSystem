@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-2 col-md-2">
+
+        <a style="text-decoration:none" href="@Url.Action("Create")">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i style="font-size:3.5em;" class="glyphicon glyphicon-plus "></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <b>New Student</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-2 col-md-2">
+
+        <a style="text-decoration:none" href="@Url.Action("Search")">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i style="font-size:3.5em;" class="glyphicon glyphicon-search"></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <b>Search Student</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-2 col-md-2">
+
+        <a style="text-decoration:none" href="@Url.Action("List")">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <i style="font-size:3.5em;" class="glyphicon glyphicon-list "></i>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <b>View All Student</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+</div>
+
